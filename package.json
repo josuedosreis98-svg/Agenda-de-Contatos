@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {
+ "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js --ignore public --ignore frontend",
-    "dev": "webpack -w"
+    "start": "nodemon server.js --ignore public --ignore frontend",
+    "dev": "webpack -w",
+    "run": "concurrently \"npm run start\" \"npm run dev\""
   },
   "keywords": [],
   "author": "",
@@ -31,6 +32,7 @@
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "babel-loader": "^10.0.0",
+    "concurrently": "^9.2.1",
     "css-loader": "^7.1.2",
     "nodemon": "^3.1.11",
     "style-loader": "^4.0.0",
