@@ -12,17 +12,27 @@
       <p class="text-center lead">Seus contatos estão aqui abaixo</p>
 
       <%- include('includes/messages') %>
-
+      <% if(contatos.length > 0) { %>}
       <div class="responsive-table">
         <table class="table my-3">
-          <tr>
-            <td>Josué</td>
-            <td>Santos</td>
-            <td>7999999999</td>
-            <td>josue@josue.com</td>
-          </tr>
+          <% contatos.forEach(contatos => { %>
+                <tr>
+                  <td><%=contatos.nome%></td>
+                  <td><%=contatos.sobrenome%></td>
+                  <td><%=contatos.email%></td>
+                  <td><%=contatos.telefone%></td>
+                  <td><a href="/contato/index/<%=contatos._id%>">Editar</a></td>
+                  <td><a class ="text-danger" href="/contato/delete/<%=contatos._id%>">Excluir</a></td>
+                </tr>
+            <% }); %>
         </table>
       </div>
+
+      <% } else { %>
+
+          <p class="text-center lead">Nenhum contato cadastrado</p>
+
+        <% } %>
 
     </div>
     <div class="col-lg-2">

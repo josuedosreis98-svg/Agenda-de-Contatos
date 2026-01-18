@@ -1,6 +1,14 @@
-const HomeModel = require('../models/homeModel');
+const Contato = require('../models/ContatoModel');
 
-exports.index = (req,res,next) => {
-    res.render('index');
-    return;
+exports.index = async (req,res) => {
+
+    try{
+    const contatos = await Contato.buscaContatos();
+    return res.render('index',{contatos});
+
+    }
+    catch(e){
+        console.log(e);
+        return res.render('404');
+    }
 };
